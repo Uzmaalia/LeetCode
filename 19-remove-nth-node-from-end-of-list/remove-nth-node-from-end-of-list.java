@@ -16,6 +16,7 @@ class Solution {
             temp=temp.next;
             len++;       
         }
+        //edge case
         if(len==n) return head.next;
         //n from end =(len-n+1) from start
         //we need a temp=len-n
