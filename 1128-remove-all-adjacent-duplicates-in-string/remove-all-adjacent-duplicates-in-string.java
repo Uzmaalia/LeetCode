@@ -1,5 +1,6 @@
 class Solution {
     public String removeDuplicates(String s) {
+        //tc-->O(n)
 
         Stack<Character> st = new Stack<Character>();
         for(char c: s.toCharArray()){
