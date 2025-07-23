@@ -5,9 +5,9 @@ class Solution {
             int ld= x%10;
             x = x/10;
             // Check for overflow
-            if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && ld > 7)) return 0;
-            if (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && ld < -8)) return 0;
-
+            
+            if(rev > 0 && rev > (Integer.MAX_VALUE - ld) / 10 || (rev < 0 && rev < (Integer.MIN_VALUE - ld) / 10 ))
+            return 0;
             rev = (rev*10)+ld;
 
         }
