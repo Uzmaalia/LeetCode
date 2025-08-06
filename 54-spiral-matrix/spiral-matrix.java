@@ -1,40 +1,45 @@
 class Solution {
-    public List<Integer> spiralOrder(int[][] arr) {
-        int m = arr.length;
-        int n= arr[0].length;
-        //spiral print
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int r = matrix.length; //row
+        int c= matrix[0].length; //col
+        int toprow = 0 ;
+        int bottomrow = r-1;
+        int leftcol = 0;
+        int rightcol = c-1;
+        int totalele = 0;
         List<Integer> ans= new ArrayList<>();
-        int minr=0, maxr=m-1;
-        int minc=0, maxc=n-1;
-        while(minr<=maxr && minc<=maxc){
-            //left to right
-            for(int j=minc; j<=maxc;j++){
-                ans.add(arr[minr][j]);
-        }
-        minr++;
-        //top to bottom
-            if (minr>maxr || minc>maxc) break;
-            for (int i = minr; i <= maxr; i++) {
-                ans.add(arr[i][maxc]);
+
+        while(totalele<r*c){
+            //toprow -> leftcol to rightcol
+            for(int j=leftcol; j<=rightcol && totalele<r*c; j++){
+                ans.add(matrix[toprow][j]);
+                totalele++;
             }
-            maxc--;
-            //right to left
-            if (minr>maxr || minc>maxc) break;
-            for (int j = maxc; j>=minc; j--) {
-                ans.add(arr[maxr][j]);
+            toprow++;
+
+            //rightcol -> toprow to bottomcol
+             for(int i=toprow; i<=bottomrow && totalele<r*c; i++){
+                ans.add(matrix[i][rightcol]);
+                totalele++;
             }
-            maxr--;
-            //bottom to top
-            if (minr>maxr || minc>maxc) break;
-            for (int i = maxr; i>= minr; i--) {
-                ans.add(arr[i][minc]);
+            rightcol--;
+
+            //bottomrow -> rightcol to leftcol
+             for(int j=rightcol; j>=leftcol && totalele<r*c; j--){
+                ans.add(matrix[bottomrow][j]);
+                totalele++;
             }
-            minc++;
+            bottomrow--;
+
+            //leftcol -> bottomrow to toprow
+             for(int i=bottomrow; i>=toprow && totalele<r*c; i--){
+                ans.add(matrix[i][leftcol]);
+                totalele++;
+            }
+            leftcol++;
 
         }
         return ans;
 
     }
 }
-
-
