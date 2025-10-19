@@ -1,16 +1,14 @@
-//BRUTE
+//OPTIMAL
 class Solution {
     public int removeDuplicates(int[] nums) {
-        HashSet<Integer> tempSet = new HashSet<>();
-        int index = 0;
-
-        for(int num : nums){
-            if(!tempSet.contains(num)){
-                tempSet.add(num);
-                nums[index] = num;
-                index++;
+        int n = nums.length;
+        int i = 0;
+        for(int j=1;j<n;j++){
+            if(nums[i] != nums[j]){
+                i++;
+                nums[i] = nums[j];
             }
         }
-        return index;
+        return i+1;
     }
 }
