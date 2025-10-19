@@ -1,19 +1,16 @@
+//BRUTE
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int n = nums.length;
-        int count = 0;
-        for(int i=0; i<n; i++){
-            if(i<n-1 && nums[i]==nums[i+1]){
-                continue;
-            }
-            else{
-                nums[count] = nums[i];
-                count++;
+        HashSet<Integer> tempSet = new HashSet<>();
+        int index = 0;
+
+        for(int num : nums){
+            if(!tempSet.contains(num)){
+                tempSet.add(num);
+                nums[index] = num;
+                index++;
             }
         }
-        return count;
-
+        return index;
     }
-
-   
 }
